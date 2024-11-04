@@ -1,0 +1,24 @@
+import math
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n == 2:
+        return True  # 2 is the only even prime number
+    if n % 2 == 0:
+        return False  # Eliminate even numbers greater than 2
+    for i in range(3, int(math.sqrt(n)) + 1, 2):  # Check only odd numbers
+        if n % i == 0:
+            return False
+    return True
+
+def count_primes_in_range(start, end):
+    prime_count = 0
+    for number in range(start, end + 1):
+        if is_prime(number):
+            prime_count += 1
+    return prime_count
+
+# Count primes from 100 to 151
+prime_count = count_primes_in_range(100, 151)
+print(f"There are {prime_count} prime numbers between 100 and 151.")
